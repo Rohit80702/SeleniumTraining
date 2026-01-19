@@ -1,0 +1,28 @@
+package Locators;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class Page3Objects {
+    private WebDriver driver;
+
+    private By priceLabel = By.cssSelector(".product-price");  // Locator for price label
+    private By imageLabel = By.cssSelector(".product-image img");  // Locator for image of the rice
+
+    public Page3Objects(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    // Get the price of the rice product
+    public String getRicePrice() {
+        WebElement priceElement = driver.findElement(priceLabel);
+        return priceElement.getText();
+    }
+
+    // Get the image source URL of the rice product
+    public String getRiceImage() {
+        WebElement imageElement = driver.findElement(imageLabel);
+        return imageElement.getAttribute("src");
+    }
+}

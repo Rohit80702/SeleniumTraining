@@ -1,0 +1,24 @@
+package Locators;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
+
+public class Page2Objects {
+    private WebDriver driver;
+    private By riceProductList = By.xpath("//ul[@class='products columns-5']/li"); 
+    public Page2Objects(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public List<WebElement> getRiceProductList() {
+        return driver.findElements(riceProductList);
+    }
+
+    public void clickOnRiceProduct(String riceName) {
+        WebElement product = driver.findElement(By.xpath("//h2[text()='" + riceName + "']"));
+        product.click();
+    }
+}

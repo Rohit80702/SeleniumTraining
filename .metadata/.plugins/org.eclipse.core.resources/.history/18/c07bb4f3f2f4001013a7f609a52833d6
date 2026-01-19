@@ -1,0 +1,45 @@
+package Locators;
+
+import java.time.Duration;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import Browser.browser;
+
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class Page1Objects extends browser{
+    
+    private WebDriver driver;
+
+    
+    @FindBy(xpath = "//div[@class='brave_popup__close__button']")
+    private WebElement popupCloseButton;
+
+    @FindBy(xpath = "//input[@name='s']")
+    private static WebElement searchBox;
+
+    @FindBy(xpath = "//span[@class='aws-search-btn_icon']")
+    private static WebElement searchButton;
+
+    public Page1Objects(WebDriver driver) {
+        this.driver = driver;
+        
+        PageFactory.initElements(driver, this);
+    }
+
+    public void closePopup() {
+        
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(popupCloseButton));
+        popupCloseButton.click();
+    }
+
+    public static void searchForRice(String searchText) {
+        searchBox.sendKeys(searchText);
+        searchButton.click();
+    }
+}

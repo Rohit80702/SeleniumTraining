@@ -1,0 +1,13 @@
+package Java_Selenium_Project;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class IFrame {
+	public static void main(String args[]) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.demo.guru99.com/");
+		driver.manage().window().maximize();
+		
+	}
+}

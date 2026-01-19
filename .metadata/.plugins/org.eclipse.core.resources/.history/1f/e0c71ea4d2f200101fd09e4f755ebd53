@@ -1,0 +1,5 @@
+Feature: Check Title of the Application
+	Scenario:Check Title
+		Given Open the browser
+		When User will enters the URL
+		Then User verifies the title "Smartbazaar - Home"

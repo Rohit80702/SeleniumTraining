@@ -1,0 +1,41 @@
+package Locators;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
+import org.openqa.selenium.support.FindAll;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import Browser.browser;
+
+public class Page1Objects extends browser{
+    	@FindBy(css = "textarea#APjFqb")
+    	public WebElement textBox;
+    	
+    	@FindBy(className = "G43f7e")
+    	public WebElement element;
+    	
+    	@FindAll(@FindBy(xpath="//ul[@class='G43f7e']/li"))
+    	@CacheLookup
+    	public WebElement textbox;
+
+
+    }
+
+    public void closePopup() {
+        
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement closeButton = wait.until(ExpectedConditions.elementToBeClickable(popupCloseButton));
+        closeButton.click();
+    }
+
+    public void searchForRice(String searchText) {
+        driver.findElement(searchBox).sendKeys(searchText);
+        driver.findElement(searchButton).click();
+    }
+}

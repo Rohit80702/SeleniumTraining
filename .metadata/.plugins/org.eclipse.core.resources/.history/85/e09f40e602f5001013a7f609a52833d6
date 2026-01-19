@@ -1,0 +1,70 @@
+package Step_Definition;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import Browser.browser;
+import Locators.Page1Objects;
+import Locators.Page2Objects;
+import Locators.Page3Objects;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+public class Demo1 {
+	Page1Objects page1Objects = new Page1Objects(null);
+	Page2Objects page2Objects = new Page2Objects(null);
+	Page3Objects page3Objects = new Page3Objects(null);
+	
+	@Given("Open the browser")
+	public void open_the_browser() throws Exception {
+	    browser.openBrowser();
+	}
+
+	@When("User enters the URL")
+	public void user_will_enters_the_url() throws Exception {
+	    browser.navigate("Smartbazaar - Home");
+	}
+	
+	@Then("User verifies the title {string}")
+	public void user_verifies_the_title(String string) {
+	    System.out.println("Title verified");
+	}
+	
+	@And("User enters the data {string} of the product")
+	public void user_enters_the_data_of_the_product(String searchData) {
+//		WebDriver driver = null;
+//		WebElement searchBox = driver.findElement(By.id("")); 
+//	    searchBox.sendKeys(searchData);
+//	    searchBox.sendKeys(Keys.ENTER);
+		page1Objects.searchForRice(searchData);
+	}
+
+	@Then("User verifies the product name and price")
+	public void user_verifies_the_product_name_and_price() {
+	    page2Objects.clickOnRiceProduct("Shri Hershne Ponni Boiled Rice (10kg)");
+	    page3Objects.getPrice();
+	}
+//	@When("User enters the data Rice of the product")
+//	public void user_enters_the_data_rice_of_the_product() {
+//		try {
+//			page1Objects.searchForRice("Rice");
+//		} catch (Exception ignored) {}
+//	}
+//
+//	@When("User enters the data Wheat of the product")
+//	public void user_enters_the_data_wheat_of_the_product() {
+//		try {
+//			page1Objects.searchForRice("Wheat");
+//		} catch (Exception ignored){}
+//		
+//	}
+//	@Then("Users verifies the search result")
+//	public void users_verifies_the_search_result() {
+//		page2Objects.getRiceProductList();
+//	}
+
+}

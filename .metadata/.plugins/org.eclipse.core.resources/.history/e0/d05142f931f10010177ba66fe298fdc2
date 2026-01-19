@@ -1,0 +1,11 @@
+package TestCase;
+
+import Browser.browser;
+
+public class Main {
+	public static void main(String args[]) throws Exception {
+		browser.openBrowser();
+		browser.navigate("Rediff.com");
+		browser.closeBrowser();
+	}
+}

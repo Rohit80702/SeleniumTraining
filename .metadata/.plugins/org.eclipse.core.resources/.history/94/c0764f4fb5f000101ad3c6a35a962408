@@ -1,0 +1,73 @@
+package Java_Selenium_Project;
+
+import java.time.Duration;
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class WindowHandler {
+	public static void main(String args[]) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.rediff.com/");
+		driver.manage().window().maximize();
+		
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//a[@title='Create Rediffmail Account']")).click();
+		
+		//Actions act = new Actions(driver);
+//		Thread.sleep(3000);
+//		
+//		JavascriptExecutor js = (JavascriptExecutor) driver;
+//		js.executeScript("window.scrollBy(0,5000)","");
+//		
+//		Thread.sleep(3000);
+//		
+//		driver.findElement(By.xpath("//p[@class='tnc']/a[1]")).click();
+//		String ParentWindow = driver.getWindowHandle();
+//		Set<String> windows = driver.getWindowHandles();
+//		Iterator<String> itr = windows.iterator();
+//		
+//		while(itr.hasNext()) {
+//			String window = itr.next();
+//			System.out.println(window);
+//			if(!ParentWindow.equals(window)) {
+//				driver.switchTo().window(window);
+//				Thread.sleep(3000);
+//				driver.findElement(By.xpath("//input[@type='button']")).click();
+//				//driver.close();
+//				break;
+//			}
+//		}
+//		driver.switchTo().window(ParentWindow);
+//		Thread.sleep(3000);
+//		
+//		JavascriptExecutor js1 = (JavascriptExecutor) driver;
+//		js1.executeScript("window.scrollTo(0,0)","");
+//		
+//		Thread.sleep(3000);
+//		
+		//driver.findElement(By.xpath("//a[@title='Rediff Home']")).click();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		Actions act = new Actions(driver);
+		
+		WebElement Input_name = driver.findElement(By.xpath("//input[@placeholder='Enter your full name']"));
+		Input_name.sendKeys("Rohit Kumar Sharma");
+		Thread.sleep(2000);
+		
+		WebElement Input_email = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='loginb81348bc']")));
+		act.moveToElement(Input_email).sendKeys("rohit10203");
+		Thread.sleep(2000);
+		
+		driver.findElement(By.xpath("//input[@name='btnchkavailb81348bc']")).click();
+		
+		//driver.quit();
+	}
+}

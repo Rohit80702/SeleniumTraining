@@ -1,0 +1,25 @@
+package Step_Definition;
+
+import Browser.browser;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+public class Demo1 {
+	@Given("Open the browser")
+	public void open_the_browser() throws Exception {
+	    browser.openBrowser();
+	}
+
+	@When("User will enters the URL")
+	public void user_will_enters_the_url() throws Exception {
+	    browser.navigate("Smartbazaar - Home");
+	}
+
+	@Then("User verifies the title {string}")
+	public void user_verifies_the_title(String string) {
+		System.out.println("Title Verifies");
+	}
+
+
+}

@@ -1,0 +1,21 @@
+package Pages;
+
+import org.openqa.selenium.WebDriver;
+
+public class Page1 {
+    private WebDriver driver;
+    private PopupAndSearchPage popupPage;
+
+    public PopupAndSearchAction(WebDriver driver) {
+        this.driver = driver;
+        this.popupPage = new PopupAndSearchPage(driver);
+    }
+
+    public void closePopup() {
+        popupPage.closePopup();
+    }
+
+    public void searchForRice(String riceName) {
+        popupPage.searchForRice(riceName);
+    }
+}

@@ -1,0 +1,26 @@
+package Java_Selenium_Project;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class IFrame {
+	public static void main(String args[]) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://www.demo.guru99.com/selenium/deprecated.html");
+		driver.manage().window().maximize();
+		
+		Thread.sleep(2000);
+		
+		driver.switchTo().frame(0);
+		WebElement frame = driver.findElement(By.xpath("//ul[@title='Packages']/li[1]/a]"));
+		frame.click();
+		
+		Thread.sleep(3000);
+		
+		driver.switchTo().frame(frame);
+		
+		driver.switchTo().defaultContent();
+	}
+}

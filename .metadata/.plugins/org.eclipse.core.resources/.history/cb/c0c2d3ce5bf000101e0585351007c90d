@@ -1,0 +1,18 @@
+package Java_Selenium_Project;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Javascript_Alerts {
+	public static void main(String args[]) {
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://the-internet.herokuapp.com/javascript_alerts");
+		
+		driver.findElement(By.xpath("//button[Text()='Click for JS Alert']")).click();
+//		driver.findElement(By.xpath(""));
+//		driver.findElement(By.xpath(""));
+//		
+		driver.quit();
+	}
+}

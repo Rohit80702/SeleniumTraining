@@ -1,0 +1,15 @@
+package Java_Selenium_Project;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class SmartBazaar {
+	public static void main(String args[]) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://www.smartbazaar.co.uk/");
+		driver.manage().window().maximize();
+		
+		Thread.sleep(2000);
+		
+	}
+}

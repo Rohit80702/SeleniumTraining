@@ -1,0 +1,61 @@
+package TestCase;
+
+import Browser.browser;
+import Locators.Page1Objects;
+import Locators.Page2Objects;
+import Locators.Page3Objects;
+import Screenshot.capture;
+
+import org.openqa.selenium.WebDriver;
+
+public class Main {
+
+    public static void main(String[] args) throws InterruptedException {
+        WebDriver driver = null;
+
+        try {
+           
+            browser.openBrowser();
+            driver = browser.driver;
+            
+            driver.manage().window().maximize();
+            driver.get("https://www.smartbazaar.co.uk/");
+            
+            Page1Objects page1Objects = new Page1Objects(driver);
+            Page2Objects page2Objects = new Page2Objects(driver);
+            Page3Objects page3Objects = new Page3Objects(driver);
+
+            page1Objects.closePopup();
+            
+            capture.Screenshot("HomePage");
+            
+            page1Objects.searchForRice("Rice");
+            
+            capture.Screenshot("Search Rice");
+         
+            page2Objects.clickOnRiceProduct("Shri Hershne Ponni Boiled Rice (10kg)");
+            
+            capture.Screenshot("Pooni Rice");
+
+            String price = page3Objects.getPrice();
+            String imageUrl = page3Objects.getImageUrl();
+
+            System.out.println("Price: " + price);
+            System.out.println("Image URL: " + imageUrl);
+
+//            if (price != null && !price.isEmpty() && imageUrl != null && !imageUrl.isEmpty()) {
+//                System.out.println("Test passed: Price and Image URL are displayed.");
+//            } else {
+//                System.out.println("Test failed: Missing price or image.");
+//            }
+
+        } catch (Exception e) {
+            //e.printStackTrace();
+        } finally {
+            if (driver != null) {
+            	Thread.sleep(3000);
+                driver.quit();
+            }
+        }
+    }
+}

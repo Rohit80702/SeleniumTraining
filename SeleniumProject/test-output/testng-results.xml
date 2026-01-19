@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="1" total="3" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-01-16T05:46:23 UTC" name="Suite" finished-at="2026-01-16T05:46:23 UTC" duration-ms="59">
+    <groups>
+      <group name="Regression">
+        <method signature="LoginTest.invalidLogin()[pri:0, instance:TestCase.LoginTest@662b4c69]" name="invalidLogin" class="TestCase.LoginTest"/>
+        <method signature="LoginTest.validLogin()[pri:0, instance:TestCase.LoginTest@662b4c69]" name="validLogin" class="TestCase.LoginTest"/>
+      </group> <!-- Regression -->
+      <group name="Smoke">
+        <method signature="LoginTest.validLogin()[pri:0, instance:TestCase.LoginTest@662b4c69]" name="validLogin" class="TestCase.LoginTest"/>
+      </group> <!-- Smoke -->
+    </groups>
+    <test started-at="2026-01-16T05:46:23 UTC" name="Test" finished-at="2026-01-16T05:46:23 UTC" duration-ms="59">
+      <class name="TestCase.LoginTest">
+        <test-method signature="invalidLogin()[pri:0, instance:TestCase.LoginTest@662b4c69]" started-at="2026-01-16T05:46:23 UTC" name="invalidLogin" finished-at="2026-01-16T05:46:23 UTC" duration-ms="10" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- invalidLogin -->
+        <test-method signature="validLogin()[pri:0, instance:TestCase.LoginTest@662b4c69]" started-at="2026-01-16T05:46:23 UTC" name="validLogin" finished-at="2026-01-16T05:46:23 UTC" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validLogin -->
+      </class> <!-- TestCase.LoginTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

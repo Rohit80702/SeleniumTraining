@@ -1,0 +1,55 @@
+package Java_Selenium_Project;
+
+import java.util.Iterator;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Main {
+	public static void main(String args[]) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+//		driver.get("https://www.google.com");
+//		driver.findElement(By.xpath("//textarea[@class='gLFyf']")).sendKeys("Java");
+//		
+//		Thread.sleep(2000);
+//		
+//		List<WebElement> result = driver.findElements(By.xpath("//ul[@class='G43f7e']/li"));
+//		Iterator <WebElement> itr = result.iterator();
+//		while(itr.hasNext())
+//		{
+//			WebElement text = itr.next();
+//			if(text.getText().equalsIgnoreCase("java compiler"))
+//			{
+//				text.click();
+//				break;
+//			}
+//		}
+		
+	/*	for(int i=0; i"<result.size();i++)
+		{
+			if (result.get(i).getText().equals("java compiler"))
+					{
+						result.get(i).click();
+						break;
+					}
+		}*/
+		driver.get("https://www.goibibo.com/");
+		driver.findElement(By.xpath("//span[@class='logSprite icClose']")).click();
+		driver.findElement(By.xpath("//p[@class='sc-jlwm9r-1 ewETUe']")).click();
+		//driver.findElement(By.xpath("//input[@class='react-autosuggest__input react-autosuggest__input--open']"));
+		
+		//WebElement search_from = driver.findElement(By.xpath("//input[@placeholder='From']"));
+		List<WebElement> Journey_from = driver.findElements(By.xpath("//div[@id='react-autowhatever-1']/div[3]/div/div/div/span"));
+		Iterator <WebElement> itr = Journey_from.iterator();
+		for(int i=0; i<Journey_from.size();i++){
+			if (Journey_from.get(i).getText().equals("BLR")){
+				Journey_from.get(i).click();
+				break;
+			}
+		}
+	}
+}

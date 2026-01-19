@@ -1,0 +1,14 @@
+Feature: Check Title of the Application
+	Scenario: Check Title
+		Given Open the browser
+		When User will enters the URL
+		Then User verifies the title "Smartbazaar - Home"
+	Scenario Outline:
+		When Open the browser
+		When User will enters the URL
+		And User enters the data <SearchData> of the product
+		Then Users verifies the search result
+		Examples:
+		|SearchData|
+		|Rice|
+		|Wheat|

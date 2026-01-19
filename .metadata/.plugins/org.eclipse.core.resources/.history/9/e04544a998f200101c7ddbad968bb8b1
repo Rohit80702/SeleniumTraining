@@ -1,0 +1,22 @@
+package TestCase;
+
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+
+public class Firefox {
+	@Test
+	public void sample() {
+		WebDriver driver = new EdgeDriver();
+		driver.manage().window().maximize();
+        driver.get("https://www.google.com/");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.titleIs("Google"));
+        AssertJUnit.assertEquals(driver.getTitle(), "google");
+        driver.quit();
+}

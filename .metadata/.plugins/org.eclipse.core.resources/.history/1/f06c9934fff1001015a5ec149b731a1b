@@ -1,0 +1,23 @@
+package TestCase;
+
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class Main {
+	@Test
+	public void sample() {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+        driver.get("https://www.smartbazaar.co.uk/");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.titleIs("Google"));
+        Assert.assertEquals(driver.getTitle(), "google");
+        driver.quit();
+	}
+}

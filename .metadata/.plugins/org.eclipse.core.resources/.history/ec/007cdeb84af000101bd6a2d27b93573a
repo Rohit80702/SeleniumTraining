@@ -1,0 +1,39 @@
+package Java_Selenium_Project;
+
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class WindowHandler {
+	public static void main(String args[]) {
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.rediff.com/");
+		driver.findElement(By.xpath("//a[@title='Create Rediffmail Account']")).click();
+		
+		Actions act = new Actions(driver);
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,5000)","");
+		
+		
+//		String ParentWindow = driver.getWindowHandle();
+//		Set<String> windows = driver.getWindowHandles();
+//		Iterator<String> itr = windows.iterator();
+//		
+//		while(itr.hasNext()) {
+//			String window = itr.next();
+//			System.out.println(window);
+//			if(!ParentWindow.equals(window)) {
+//				driver.switchTo().window(window);
+//				driver.findElement(By.name(window));
+//				driver.close();
+//			}
+//		}
+//		driver.switchTo().window(ParentWindow);
+	}
+}

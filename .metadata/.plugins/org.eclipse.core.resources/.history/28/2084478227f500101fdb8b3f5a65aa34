@@ -1,0 +1,64 @@
+package Utils;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.Status;  // Correct import for ExtentReports' Status
+
+import java.io.File;
+
+public class ExtendManager {
+
+    static ExtentReports extent;
+    static ExtentSparkReporter reporter;
+    static ExtentTest logger1;
+
+    static {
+        // Create the Reports folder if it doesn't exist
+        String reportPath = System.getProperty("user.dir") + "/target/Reports";
+        File reportDir = new File(reportPath);
+        if (!reportDir.exists()) {
+            reportDir.mkdirs();  // Create the folder if it doesn't exist
+        }
+
+        // Initialize ExtentReports and ExtentSparkReporter only once when the class is loaded
+        extent = new ExtentReports();
+        reporter = new ExtentSparkReporter(reportPath + "/extentReport1.html");
+        extent.attachReporter(reporter);
+    }
+
+    public static void generateReport() {
+        // Create a new test in the report
+        logger1 = extent.createTest("Open Test");
+
+        try {
+            // Initialize the ChromeDriver
+            ChromeDriver driver = new ChromeDriver();
+            driver.get("https://www.google.com/");
+            
+            // Wait for the page to load or use an implicit or explicit wait
+            driver.manage().window().maximize();
+            
+            // Add a short delay (replace with WebDriverWait in real projects)
+            Thread.sleep(2000);  
+
+            // Log the success using ExtentReports' Status enum
+            logger1.log(Status.PASS, "Application opened successfully");
+            
+            // Close the driver
+            driver.quit();
+        } catch (Exception e) {
+            // If there's an exception, log it in the report
+            logger1.log(Status.FAIL, "Failed to open the application: " + e.getMessage());
+        } finally {
+            // Always flush the extent report to generate the report at the end
+            extent.flush();
+        }
+    }
+
+    // Main method for testing purposes
+    public static void main(String[] args) {
+        generateReport();  // Generate the Extent Report
+    }
+}

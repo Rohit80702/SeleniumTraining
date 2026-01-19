@@ -1,0 +1,42 @@
+package Java_Selenium_Project;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class SmartBazaar {
+	public static void main(String args[]) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://www.smartbazaar.co.uk/");
+		System.out.println(driver.getTitle());
+		driver.manage().window().maximize();
+		
+		Thread.sleep(5000);
+		
+		driver.findElement(By.xpath("//img[contains(@class, 'brave_element__image')]")).click();
+		//Actions act = new Actions(driver);
+		Thread.sleep(2000);
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+//		WebElement user_logo = driver.findElement(By.xpath("//a[contains(@class, 'dropdown-toggle')]"));
+//		act.moveToElement(user_logo).click().perform();
+		
+		WebElement user_logo = driver.findElement(By.xpath("//a[contains(@class, 'dropdown-toggle')]"));
+		js.executeScript("arguments[0].click();", user_logo);
+		
+		Thread.sleep(2000);
+		
+//		WebElement login_Register = driver.findElement(By.xpath("//a[contains(text(),'Login / Register')]"));
+//		act.moveToElement(login_Register).click().perform();
+		
+		WebElement login_Register = driver.findElement(By.xpath("//a[contains(text(),'Login / Register')]"));
+		js.executeScript("arguments[0].click();", login_Register);
+	
+		Thread.sleep(3000);
+		
+		driver.quit();
+	}
+}

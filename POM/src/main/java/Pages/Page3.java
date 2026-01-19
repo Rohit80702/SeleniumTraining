@@ -1,0 +1,22 @@
+package Pages;
+
+import Pages.Page3;
+import org.openqa.selenium.WebDriver;
+
+public class Page3{
+    private WebDriver driver;
+    private Page3 page3;
+
+    public Page3(WebDriver driver) {
+        this.driver = driver;
+        this.page3 = new Page3(driver);
+    }
+
+    public String getPrice() {
+        return page3.getPrice();
+    }
+
+    public String getImageUrl() {
+        return page3.getImageUrl();
+    }
+}

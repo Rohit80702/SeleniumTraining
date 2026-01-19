@@ -1,0 +1,12 @@
+package Test_Runner;
+
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+
+@CucumberOptions(features="src//test//resources//Features",
+glue= {"Step definition"}, tags="Smoke", monochrome=true,
+plugin= {"preety", "html:target/htmlreports.html"})
+
+public class TestRunner extends AbstractTestNGCucumberTests{
+	
+}

@@ -1,0 +1,25 @@
+package actions;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
+
+public class Page2 {
+    private WebDriver driver;
+    private By riceProductList = By.cssSelector(".product-list .product");  // Modify the selector as per the actual page
+
+    public Page2(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public List<WebElement> getRiceProductList() {
+        return driver.findElements(riceProductList);
+    }
+
+    public void clickOnRiceProduct(String riceName) {
+        WebElement product = driver.findElement(By.xpath("//h3[text()='" + riceName + "']"));
+        product.click();
+    }
+}

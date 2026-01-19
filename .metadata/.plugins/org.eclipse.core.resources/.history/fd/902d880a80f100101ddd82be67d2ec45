@@ -1,0 +1,39 @@
+package Locators;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Page2Objects {
+    private WebDriver driver;
+
+    private By riceResults = By.cssSelector(".product-list .product");  // Update the locator for rice items
+
+    public Page2Objects(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    // Get a list of all the rice product elements
+    public List<WebElement> getRiceResults() {
+        return driver.findElements(riceResults);
+    }
+
+    // Get the names of the rice products
+    public List<String> getRiceProductNames() {
+        List<String> riceNames = new ArrayList<>();
+        List<WebElement> products = getRiceResults();
+        for (WebElement product : products) {
+            riceNames.add(product.getText());
+        }
+        return riceNames;
+    }
+
+    // Click on a specific rice product based on its name
+    public void clickOnRiceProduct(String riceName) {
+        WebElement product = driver.findElement(By.xpath("//h3[text()='" + riceName + "']"));
+        product.click();
+    }
+}

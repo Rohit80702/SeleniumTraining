@@ -1,0 +1,31 @@
+package Pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class Page1 {
+    private WebDriver driver;
+
+    private By popupCloseButton = By.id("popup-close-id");  
+    private By searchBox = By.id("search-box-id");
+    private By searchButton = By.id("search-button-id");
+
+    public Page1(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    // Close the popup if it is displayed
+    public void closePopup() {
+        WebElement closeButton = driver.findElement(popupCloseButton);
+        if (closeButton.isDisplayed()) {
+            closeButton.click();
+        }
+    }
+
+    // Perform the search action
+    public void searchForRice(String productName) {
+        driver.findElement(searchBox).sendKeys(productName);
+        driver.findElement(searchButton).click();
+    }
+}

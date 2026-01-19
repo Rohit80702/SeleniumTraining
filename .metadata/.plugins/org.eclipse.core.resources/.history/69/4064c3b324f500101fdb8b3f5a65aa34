@@ -1,0 +1,30 @@
+package Utils;
+
+public class ExtendManager {
+	static ExtentReports extent = new ExtentReports();
+
+	static ExtentSparkReporter reporter = new ExtentSparkReporter
+
+			(System.getProperty("user.dir")+"//target//Reports//extentReport1.html");
+
+	static ExtentTest logger1;
+ 
+extent.attachReporter(reporter);
+		logger1 = extent.createTest("Open Test");
+		logger1.log(Status.INFO, "Open the Application");
+		try {
+		 	driver = new ChromeDriver();
+			driver.get("https://www.google.com/");
+			//DemoLog.sample(1);
+			driver.manage().window().maximize();
+			Thread.sleep(2000);	
+			logger1.log(Status.PASS, "Application opened");
+		}
+		catch( Exception e)
+		{
+			//DemoLog.sample(3);
+			logger1.log(Status.FAIL, "Failed Logout");
+		}
+		extent.flush();
+ 
+}

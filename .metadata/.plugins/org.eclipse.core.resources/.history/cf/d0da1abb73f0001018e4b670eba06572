@@ -1,0 +1,24 @@
+package Java_Selenium_Project;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class SmartBazaar {
+	public static void main(String args[]) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://www.smartbazaar.co.uk/");
+		driver.manage().window().maximize();
+		
+		Thread.sleep(2000);
+		
+		Actions act = new Actions(driver);
+		driver.findElement(By.xpath("//img[@class='brave_element__image  brave_element_img_item skip-lazy no-lazyload']")).click();
+		WebElement user_logo = driver.findElement(By.xpath("//div[@class='icon-bar text-right']/ul/li[3]/a"));
+		act.moveToElement(user_logo).click().build().perform();
+		//System.out.print(user_logo.getSize());
+		act.moveByOffset(120,0).click();
+	}
+}

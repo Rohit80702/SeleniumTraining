@@ -1,0 +1,20 @@
+package Pages;
+
+import Pages.Page2;
+import org.openqa.selenium.WebDriver;
+
+import Browser.browser;
+
+public class Page2{
+    private WebDriver driver;
+    private Page2 page2;
+
+    public Page2(WebDriver driver) {
+        this.driver = driver;
+        this.page2 = new Page2(driver);
+    }
+
+    public void clickOnRiceProduct(String riceName) {
+        page2.clickOnRiceProduct(riceName);
+    }
+}

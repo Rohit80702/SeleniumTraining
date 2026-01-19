@@ -1,0 +1,41 @@
+package Locators;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import Browser.browser;
+
+import java.time.Duration;
+import java.util.List;
+
+public class Page2Objects {
+    private WebDriver driver;
+    private JavascriptExecutor js;
+    
+    private By riceProductList = By.xpath("//ul[@class='products columns-5']/li"); 
+    public Page2Objects(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public List<WebElement> getRiceProductList() {
+        return driver.findElements(riceProductList);
+    }
+
+    public void clickOnRiceProduct(String riceName) throws InterruptedException {
+//        WebElement product = driver.findElement(By.xpath("//h2[text()='" + riceName + "']"));
+//        product.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement productElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[text()='"+riceName+"']")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", productElement);
+        productElement.click();
+        Thread.sleep(2000);
+    
+        js.executeScript("window.scrollBy(0, 250)");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='woocommerce-Price-amount amount']/bdi"))); 
+
+    }
+}

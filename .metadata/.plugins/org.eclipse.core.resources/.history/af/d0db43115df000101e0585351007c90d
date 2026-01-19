@@ -1,0 +1,30 @@
+package Java_Selenium_Project;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Javascript_Alerts {
+	public static void main(String args[]) {
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://the-internet.herokuapp.com/javascript_alerts");
+		
+		driver.findElement(By.xpath("//button[Text()='Click for JS Alert']")).click();
+		Alert alert1 = driver.switchTo().alert();
+		alert1.accept();
+		
+		driver.findElement(By.xpath("//button[Text()='Click for JS Confirm']")).click();
+		Alert alert2 = driver.switchTo().alert();
+		alert2.dismiss();
+		
+		driver.findElement(By.xpath("//button[Text()='Click for JS Prompt']")).click();
+		Alert alert3 = driver.switchTo().alert();
+		alert3.sendKeys("Hello");
+		alert3.accept();
+
+		driver.quit();
+		
+	}
+}

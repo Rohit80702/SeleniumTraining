@@ -1,0 +1,18 @@
+package TestCase;
+
+import org.testng.annotations.Test;
+
+public class LoginTest {
+	@Test(groups = {"Smoke","Regression"})
+	public void validLogin(){
+		System.out.println("Valid Login Test");
+	}
+	@Test(groups = {"Regression"})
+	public void invalidLogin(){
+		System.out.println("Invalid Login Test");
+	}
+	@Test(groups = {"Sanity"})
+	public void forgetPassword(){
+		System.out.println("Forget Password Test");
+	}
+}

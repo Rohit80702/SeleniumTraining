@@ -1,0 +1,17 @@
+Feature: Search Product and Verify Details
+
+  Scenario: Check Title of the Application
+    	Given Open the browser
+    	When User enters the URL
+	    Then User verifies the title "Smartbazaar - Home"
+
+  Scenario Outline: Search product and verify name and price
+	    	Given Open the browser
+		    When User enters the URL
+		    And User enters the data "<SearchData>" of the product
+		    Then User verifies the product name and price
+
+    	Examples:
+      		| SearchData |
+	      	| Rice       |
+	      	| Wheat      |

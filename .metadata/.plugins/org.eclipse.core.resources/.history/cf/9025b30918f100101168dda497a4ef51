@@ -1,0 +1,10 @@
+package Browser;
+
+public class browser{
+	public satic void WebDriver driver;
+	public static void openBrowser() throws Exception{
+		try {
+				
+		}
+	}
+}

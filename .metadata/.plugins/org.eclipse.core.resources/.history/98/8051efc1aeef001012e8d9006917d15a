@@ -1,0 +1,77 @@
+package Java_Selenium_Project;
+
+import java.time.Duration;
+import java.util.Iterator;
+import java.util.List;
+
+import org.jspecify.annotations.Nullable;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Main {
+	public static void main(String args[]) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+//		driver.get("https://www.google.com");
+//		driver.findElement(By.xpath("//textarea[@class='gLFyf']")).sendKeys("Java");
+//		
+//		Thread.sleep(2000);
+//		
+//		List<WebElement> result = driver.findElements(By.xpath("//ul[@class='G43f7e']/li"));
+//		Iterator <WebElement> itr = result.iterator();
+//		while(itr.hasNext())
+//		{
+//			WebElement text = itr.next();
+//			if(text.getText().equalsIgnoreCase("java compiler"))
+//			{
+//				text.click();
+//				break;
+//			}
+//		}
+		
+	/*	for(int i=0; i"<result.size();i++)
+		{
+			if (result.get(i).getText().equals("java compiler"))
+					{
+						result.get(i).click();
+						break;
+					}
+		}*/
+		driver.get("https://www.goibibo.com/");
+		driver.findElement(By.xpath("//span[@class='logSprite icClose']")).click();
+		driver.findElement(By.xpath("//p[@class='sc-jlwm9r-1 ewETUe']")).click();
+		//driver.findElement(By.xpath("//input[@class='react-autosuggest__input react-autosuggest__input--open']"));
+		
+		//From TextInput
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='From']/following-sibling::p"))).click();
+		
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@type='text']"))).sendKeys("DEL");
+		
+		//To TextInput
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='To]/following-sibling::p"))).click();
+		
+		Thread.sleep(2000);
+		
+		List<WebElement> suggestions = driver.findElements(By.xpath("//div[@id=\"react-autowhatever-1\"]/div[3]/div/div"));
+		Iterator <WebElement> itr = suggestions.iterator();
+		for(int i=0; i<suggestions.size();i++){
+			if (suggestions.get(i).getText().contains("HYD")){
+				suggestions.get(i).click();
+				break;
+			}
+		}
+		
+		for(int i=0; i<suggestions.size();i++){
+			if (suggestions.get(i).getText().contains("KOl")){
+				suggestions.get(i).click();
+				break;
+			}
+		}
+	}
+}

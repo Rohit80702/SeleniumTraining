@@ -1,0 +1,18 @@
+package TestCase;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+
+import Browser.browser;
+
+public class Test3 {
+	@BeforeMethod
+	public void open() throws Exception{
+		browser.openBrowser();
+	}
+	@DataProvider(name="Test2")
+	public object[][] data() throws Exception{
+		Object[][] arrayObject = read.readExcel(1,2,3);
+		return arrayObject;
+	}
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="TestCase.Firefox">
+        <methods>
+          <include name="sample"/>
+        </methods>
+      </class> <!-- TestCase.Firefox -->
+      <class name="TestCase.Edge">
+        <methods>
+          <include name="sample"/>
+        </methods>
+      </class> <!-- TestCase.Edge -->
+      <class name="TestCase.Chrome">
+        <methods>
+          <include name="sample"/>
+        </methods>
+      </class> <!-- TestCase.Chrome -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

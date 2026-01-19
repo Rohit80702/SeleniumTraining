@@ -1,0 +1,21 @@
+package Pages;
+
+import org.openqa.selenium.WebDriver;
+
+public class Page3 {
+    private WebDriver driver;
+    private RiceDetailPage riceDetailPage;
+
+    public RiceDetailAction(WebDriver driver) {
+        this.driver = driver;
+        this.riceDetailPage = new RiceDetailPage(driver);
+    }
+
+    public String getPrice() {
+        return riceDetailPage.getPrice();
+    }
+
+    public String getImageUrl() {
+        return riceDetailPage.getImageUrl();
+    }
+}

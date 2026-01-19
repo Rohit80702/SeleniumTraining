@@ -1,0 +1,70 @@
+package TestCase;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.AssertJUnit;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import Browser.browser;
+import Locators.Page1Objects;
+import Pages.Page1;
+
+public class Test1 extends browser {
+    private WebDriver driver;
+    private Page1 page1;
+    
+    
+	@BeforeMethod
+	public void setUp() throws Exception{ 
+ 
+    	browser.openBrowser();
+        driver = browser.driver;
+        
+        driver.manage().window().maximize();
+        driver.get("https://www.smartbazaar.co.uk/");
+    }
+
+    @Test
+    public void testClosePopup() {
+    	page1 = new Page1(driver);
+    	page1.closePopup();
+           
+    }
+
+    @Test
+    public void testSearchForRice() {
+    	testClosePopup();
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    	page1 = new Page1(driver);
+		String searchText = "Rice";
+		page1.searchForRice(searchText);
+//		WebElement searchButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='aws-search-btn_icon']")));
+//		searchButton.click();
+
+        WebElement searchResult = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@name='s']")));
+        AssertJUnit.assertTrue(searchResult.getText().contains(searchText));
+    }
+    
+  
+	@AfterMethod
+	public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}

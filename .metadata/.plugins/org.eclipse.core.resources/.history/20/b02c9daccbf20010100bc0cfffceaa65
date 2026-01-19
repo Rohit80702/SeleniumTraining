@@ -1,0 +1,24 @@
+//package TestCase;
+//
+//import org.testng.annotations.BeforeMethod;
+//import org.testng.annotations.DataProvider;
+//import org.testng.annotations.Test;
+//
+//import Browser.browser;
+//
+//public class Test2 {
+//	@BeforeMethod
+//	public void open() throws Exception{
+//		browser.openBrowser();
+//	}
+//	@DataProvider(name="Test2")
+//	public Object[][] data() throws Exception{
+//		Object[][] arrayObject =read.readExcel(1,2,3);
+//		return arrayObject;
+//	}
+//	@Test(dataProvider="Test2")
+//	public void page1(String wait, String link, String verification) throws Exception{
+//		browser.openBrowser();
+//		
+//	}
+//}

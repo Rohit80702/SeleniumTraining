@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="8.768" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-01-19T11:06:18.170259160Z">
+<testcase classname="Search Product and Verify Details" name="Check Logo" time="8.541">
+<system-out><![CDATA[
+Given Open the browser......................................................passed
+When User enters the URL....................................................passed
+Then User verifies the title "Smartbazaar - Home"...........................passed
+]]></system-out>
+</testcase>
+</testsuite>

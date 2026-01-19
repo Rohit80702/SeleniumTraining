@@ -1,0 +1,26 @@
+package actions;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class Page3 {
+    private WebDriver driver;
+
+    private By priceLabel = By.cssSelector(".product-price");  // Modify as per the actual page
+    private By imageLabel = By.cssSelector(".product-image img");  // Modify as per the actual page
+
+    public Page3(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public String getPrice() {
+        WebElement priceElement = driver.findElement(priceLabel);
+        return priceElement.getText();
+    }
+
+    public String getImageUrl() {
+        WebElement imageElement = driver.findElement(imageLabel);
+        return imageElement.getAttribute("src");
+    }
+}

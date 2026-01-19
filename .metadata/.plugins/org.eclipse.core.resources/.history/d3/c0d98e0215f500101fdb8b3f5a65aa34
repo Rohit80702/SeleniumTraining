@@ -1,0 +1,67 @@
+package Step_Definition;
+
+import Browser.browser;
+import Locators.Page1Objects;
+import Locators.Page2Objects;
+import Locators.Page3Objects;
+import io.cucumber.java.After;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
+
+public class Demo1 {
+    private WebDriver driver; 
+    private Page1Objects page1Objects;
+    private Page2Objects page2Objects;
+    private Page3Objects page3Objects;
+    
+    @Given("Open the browser")
+    public void open_the_browser() throws Exception {
+    	driver = browser.openBrowser(); 
+        page1Objects = new Page1Objects(driver);
+        page2Objects = new Page2Objects(driver);
+        page3Objects = new Page3Objects(driver);
+        
+    }
+
+    @When("User enters the URL")
+    public void user_will_enters_the_url() throws Exception {
+        browser.navigate("Smartbazaar - Home"); 
+    }
+    
+    @Then("User verifies the title {string}")
+    public void user_verifies_the_title(String string) {
+        String title = driver.getTitle();
+        if (title.equals(string)) {
+            System.out.println("Title verified: " + title);
+        } else {
+            System.out.println("Title mismatch. Expected: " + string + ", Found: " + title);
+        }
+    }
+    
+    @And("User enters the data {string} of the product")
+    public void user_enters_the_data_of_the_product(String searchData) {        
+        page1Objects.searchForRice(searchData); 
+    }
+
+    @Then("User verifies the product name {String}")
+    public void user_verifies_the_product_name(String product) {
+    	page2Objects.clickOnRiceProduct(product);
+    	//System.out.println("Product Verified");
+    }
+    
+    @Then("User verifies the product price")
+    public void user_verifies_the_product_price() {        
+    	page3Objects.getPrice();
+    	//System.out.println("Price Verified");
+    }
+
+    @After
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit(); 
+        }
+    }
+}

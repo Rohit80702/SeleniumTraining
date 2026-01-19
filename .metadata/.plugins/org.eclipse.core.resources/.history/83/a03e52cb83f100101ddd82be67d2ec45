@@ -1,0 +1,59 @@
+import Browser.browser;
+import Locators.Page1Objects;
+import Locators.Page2Objects;
+import Locators.Page3Objects;
+import Pages.Page1;
+import Pages.Page2;
+import Pages.Page3;
+import org.openqa.selenium.WebDriver;
+
+public class Main {
+
+    public static void main(String[] args) {
+        WebDriver driver = null;
+
+        try {
+            // Open the browser
+            browser.openBrowser();
+            driver = browser.driver;
+            
+            // Navigate to the website
+            driver.get("https://www.smartbazaar.co.on");
+            
+            // Create objects for Page1Objects, Page2Objects, and Page3Objects
+            Page1Objects page1Objects = new Page1Objects(driver);
+            Page2Objects page2Objects = new Page2Objects(driver);
+            Page3Objects page3Objects = new Page3Objects(driver);
+
+            // 1. Handle popup and search for rice
+            page1Objects.closePopup();
+            page1Objects.searchForRice("Rice");
+
+            // 2. Click on the "Trophy Basmati Rice 5kg" from the search results
+            page2Objects.clickOnRiceProduct("Trophy Basmati Rice 5kg");
+
+            // 3. Get the price and image URL of the selected rice
+            String price = page3Objects.getPrice();
+            String imageUrl = page3Objects.getImageUrl();
+
+            // Print the results to the console
+            System.out.println("Price: " + price);
+            System.out.println("Image URL: " + imageUrl);
+
+            // Verify if price and image are fetched correctly
+            if (price != null && !price.isEmpty() && imageUrl != null && !imageUrl.isEmpty()) {
+                System.out.println("Test passed: Price and Image URL are displayed.");
+            } else {
+                System.out.println("Test failed: Missing price or image.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close the browser after test completion
+            if (driver != null) {
+                driver.quit();
+            }
+        }
+    }
+}

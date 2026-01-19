@@ -1,0 +1,18 @@
+package Pages;
+
+import pages.RiceListPage;
+import org.openqa.selenium.WebDriver;
+
+public class RiceListAction {
+    private WebDriver driver;
+    private RiceListPage riceListPage;
+
+    public RiceListAction(WebDriver driver) {
+        this.driver = driver;
+        this.riceListPage = new RiceListPage(driver);
+    }
+
+    public void clickOnRiceProduct(String riceName) {
+        riceListPage.clickOnRiceProduct(riceName);
+    }
+}

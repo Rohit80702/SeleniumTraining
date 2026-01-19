@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="RefactoringWizard.preview">
+		<item key="width" value="600"/>
+		<item key="height" value="400"/>
+	</section>
+	<section name="RefactoringWizard.Convert from JUnit">
+		<item key="width" value="713"/>
+		<item key="height" value="326"/>
+	</section>
+	<section name="org.eclipse.ltk.ui.refactoring.settings">
+	</section>
+	<section name="ConvertFromJUnitWizard.dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="248"/>
+		<item key="DIALOG_Y_ORIGIN" value="0"/>
+		<item key="DIALOG_WIDTH" value="719"/>
+		<item key="DIALOG_HEIGHT" value="550"/>
+		<item key="DIALOG_FONT_NAME" value="1|Sans|10.0|0|GTK|1|"/>
+	</section>
+</section>

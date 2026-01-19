@@ -1,0 +1,40 @@
+package Step_Definition;
+
+import Browser.browser;
+import Locators.Page1Objects;
+import Locators.Page2Objects;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+public class Demo1 {
+	@Given("Open the browser")
+	public void open_the_browser() throws Exception {
+	    browser.openBrowser();
+	}
+
+	@When("User will enters the URL")
+	public void user_will_enters_the_url() throws Exception {
+	    browser.navigate("Smartbazaar - Home");
+	}
+
+	@Then("User verifies the title {string}")
+	public void user_verifies_the_title(String string) {
+		System.out.println("Title Verifies");
+	}
+	
+	@And("User enters the data {String} of the product")
+	public void user_enters_the_data_rice_of_the_product() {
+		Page1Objects page1Objects = new Page1Objects(null);
+		page1Objects.searchForRice("Rice");
+	}
+
+	@Then("Users verifies the search result")
+	public void users_verifies_the_search_result() {
+		Page2Objects page2Objects = new Page2Objects(null);
+		page2Objects.getRiceProductList();
+	}
+
+
+}

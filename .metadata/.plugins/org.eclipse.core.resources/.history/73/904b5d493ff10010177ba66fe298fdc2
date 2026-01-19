@@ -1,0 +1,18 @@
+package TestCase;
+
+import Browser.browser;
+import Pages.Page1;
+import Screenshot.capture;
+
+public class Main {
+	public static void main(String args[]) throws Exception {
+		browser.openBrowser();
+		capture.Screenshot("Home Page");
+		browser.navigate("Rediff.com: News | Rediffmail | Stock Quotes | Rediff Gurus");
+		browser.closeBrowser();
+		
+		//Page1.click("Create Account");
+		
+		
+	}
+}

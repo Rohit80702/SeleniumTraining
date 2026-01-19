@@ -1,0 +1,48 @@
+package Locators;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+//import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import Browser.browser;
+
+import java.time.Duration;
+import java.util.List;
+
+public class Page2Objects extends browser{
+    
+    //private WebDriver driver;
+
+    
+    @FindBy(xpath = "//ul[@class='products columns-5']/li")
+    private List<WebElement> riceProductList;
+
+    public Page2Objects(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this); 
+    }
+
+    public List<WebElement> getRiceProductList() {
+        return riceProductList;
+    }
+
+    public void clickOnRiceProduct(String riceName) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement productElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h2[text()='" + riceName + "']")));
+       
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", productElement);
+        
+        productElement.click();
+        
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='woocommerce-Price-amount amount']/bdi")));
+        
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0, 250)");
+    }
+}
